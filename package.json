@@ -1,0 +1,62 @@
+{
+  "name": "vue-yup-form",
+  "version": "1.0.0-beta.4",
+  "description": "Composition API & Yup Powered Form Validation",
+  "keywords": [
+    "vue",
+    "yup",
+    "form",
+    "validate",
+    "validation",
+    "vue-yup-form"
+  ],
+  "author": "mascii<mascii@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mascii/vue-yup-form/issues"
+  },
+  "files": [
+    "dist/index.*",
+    "dist/yup.d.ts"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mascii/vue-yup-form.git"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts src/yup.ts --external './yup' --format cjs,esm --dts --clean",
+    "lint": "prettier ./{src,__tests__}/ --check",
+    "lint:fix": "nr lint --write",
+    "test": "nr test:vue3 && nr test:vue2 && vue-demi-switch 3",
+    "test:vue2": "vue-demi-switch 2.7 vue2 && vitest run --config ./config/vitest.ts --coverage",
+    "test:vue3": "vue-demi-switch 3 vue && vitest run --config ./config/vitest.ts --coverage",
+    "watch": "nr build --watch ./src/"
+  },
+  "dependencies": {
+    "vue-demi": "^0.13.7"
+  },
+  "peerDependencies": {
+    "vue": "^2.0.0 || >=3.0.0",
+    "yup": "^0.32.11 || ^1.0.0-beta.4"
+  },
+  "devDependencies": {
+    "@antfu/ni": "^0.17.2",
+    "c8": "^7.12.0",
+    "prettier": "^2.7.1",
+    "tsup": "^6.2.2",
+    "typescript": "^4.7.4",
+    "vitest": "^0.21.1",
+    "vue": "^3.0.0",
+    "vue2": "npm:vue@^2.7.8"
+  }
+}

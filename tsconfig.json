@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "strict": true,
+    "types": ["vitest/globals"],
+    "declaration": true
+  },
+  "include": ["src", "__tests__"],
+  "exclude": ["node_modules"]
+}
