@@ -15,6 +15,7 @@
   "bugs": {
     "url": "https://github.com/mascii/vue-yup-form/issues"
   },
+  "homepage": "https://vue-yup-form.pages.dev/",
   "files": [
     "dist/index.*",
     "dist/yup.d.ts"
@@ -40,7 +41,10 @@
     "test": "nr test:vue3 && nr test:vue2 && vue-demi-switch 3",
     "test:vue2": "vue-demi-switch 2.7 vue2 && vitest run --config ./config/vitest.ts --coverage",
     "test:vue3": "vue-demi-switch 3 vue && vitest run --config ./config/vitest.ts --coverage",
-    "watch": "nr build --watch ./src/"
+    "watch": "nr build --watch ./src/",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
   },
   "dependencies": {
     "vue-demi": "^0.13.7"
@@ -55,8 +59,9 @@
     "prettier": "^2.7.1",
     "tsup": "^6.2.2",
     "typescript": "^4.7.4",
+    "vitepress": "^1.0.0-alpha.4",
     "vitest": "^0.21.1",
-    "vue": "^3.0.0",
+    "vue": "^3.2.37",
     "vue2": "npm:vue@^2.7.8"
   }
 }
