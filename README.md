@@ -1,5 +1,5 @@
 # vue-yup-form
-A form library for Vue, forms are defined with pairs of state value and yup schema.
+Composition API & Yup Powered Form Validation. This tiny library allows Vue and Yup to be a best friend.
 
 ## Requirements
 The following versions are supported:
@@ -14,15 +14,8 @@ The following versions are supported:
 - [TypeScript](https://www.npmjs.com/package/typescript)
   - `>=4.4.0`
 
-## Install
-Install with [npm](https://www.npmjs.com/):
-
-```
-npm install vue-yup-form
-```
-
-## Usage
-TBW
+## Documentation
+To check out docs, visit [vue-yup-form.pages.dev](https://vue-yup-form.pages.dev/).
 
 ## License
 MIT
