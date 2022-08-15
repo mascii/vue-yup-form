@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 
 export default defineConfig({
   title: "vue-yup-form",
-  description: "Just playing around.",
+  description: "Composition API & Yup Powered Form Validation",
   themeConfig: {
     sidebar: sidebarGuide(),
     socialLinks: [
