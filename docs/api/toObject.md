@@ -31,6 +31,7 @@ test("toObject()", () => {
     b: field("B", yup.string().required()),
     c: privateField("C", yup.string().required()),
     d: formsField(generateSubForm, ["x", "y", ""], yup.array().min(1)),
+    e: () => {},
   });
 
   expect(toObject(form)).toEqual({

@@ -20,7 +20,12 @@ import type {
 
 type Form = {
   [key: `$${string}`]: never;
-  [key: string]: Field | PrivateField | FormsField | Form;
+  [key: string]:
+    | Field
+    | PrivateField
+    | FormsField
+    | ((...args: any[]) => any)
+    | Form;
 };
 
 export type FormPropType<T extends () => Form> = PropType<
@@ -257,7 +262,7 @@ export function isValidForm<T extends Form>(
 }
 
 type ToObjectOutput<T extends Form> = {
-  [K in keyof T as T[K] extends PrivateField
+  [K in keyof T as T[K] extends PrivateField | ((...args: any[]) => any)
     ? never
     : Exclude<K, "$key">]: T[K] extends Form
     ? ToObjectOutput<T[K]>

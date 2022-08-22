@@ -15,6 +15,7 @@ describe("toObject", () => {
       c: field("C", yup.string().required()),
       id: privateField<number | null>(null, yup.number().required()),
       memo: privateField("hello, world"),
+      method() {},
     });
     expect(toObject(form)).toEqual({
       a: "A",

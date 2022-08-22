@@ -16,11 +16,17 @@ An object that satisfies the following:
   - `Field` object ([`field()`](/api/field) returns)
   - `PrivateField` object ([`privateField()`](/api/privateField) returns)
   - `FormsField` object ([`formsField()`](/api/formsField) returns)
+  - A Function
   - `Form` object recursively
 
 ```typescript
 type Form = {
   [key: `$${string}`]: never;
-  [key: string]: Form | Field | PrivateField | FormsField;
+  [key: string]:
+    | Field
+    | PrivateField
+    | FormsField
+    | ((...args: any[]) => any)
+    | Form;
 };
 ```
