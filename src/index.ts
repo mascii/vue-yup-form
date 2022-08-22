@@ -279,7 +279,7 @@ export function toObject<T extends Form>(
   const obj: any = {};
 
   for (const [key, value] of Object.entries(form)) {
-    if (key === "$key" || value instanceof PrivateField) {
+    if (value instanceof PrivateField) {
       continue;
     }
 
