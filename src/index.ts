@@ -166,7 +166,7 @@ class FormsField<T extends (arg: any) => Form = (arg: any) => Form> {
   ): void {
     const initialValueList =
       typeof initialValueListOrLength === "number"
-        ? ([...new Array(initialValueListOrLength)] as undefined[])
+        ? ([...Array(initialValueListOrLength)] as undefined[])
         : initialValueListOrLength;
 
     this.$formsRef.value = initialValueList.map((initialValue) =>
