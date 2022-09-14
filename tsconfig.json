@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
+    "useDefineForClassFields": false,
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "outDir": "dist",
