@@ -90,7 +90,7 @@ class Field<T = any> {
 
 class PrivateField<T = any> extends Field<T> {
   // Distinguish between Field and PrivateField in the structural type system
-  private readonly $isPrivate = true;
+  private readonly __isPrivateField!: true;
 }
 
 class FormsField<T extends (arg: any) => Form = (arg: any) => Form> {
