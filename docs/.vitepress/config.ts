@@ -44,6 +44,10 @@ function sidebarGuide() {
           text: "Multi-step form wizard",
           link: "/examples/multi-step-form-wizard",
         },
+        {
+          text: "Pseudo async validation",
+          link: "/examples/pseudo-async-validation",
+        },
       ],
     },
     {
