@@ -15,6 +15,17 @@ const lastName = field("", yup.string().required("REQUIRED!"));
 console.log(lastName.$error.message); // "REQUIRED!"
 ```
 
+### `type` property
+- Error type such as `"required"` (`string`). This property is useful for testing because it is independent of error messages.
+
+```typescript
+const firstName = field("", yup.string().required())
+console.log(firstName.$error.type); // "required"
+
+const lastName = field("", yup.string().required("REQUIRED!"));
+console.log(lastName.$error.type); // "required"
+```
+
 ### `errors` property
 - Array of error messages (`string[]`).
   - `Field.$errorMessages` and `FormsField.$errorMessages` can be used instead. These properties return an empty array if there are no errors.
