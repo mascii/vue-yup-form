@@ -16,7 +16,7 @@ function formsField<T extends (arg: any) => Form>(generateForm: T, initialValueL
 ### `initialValueListOrLength` (Optional, Default: `[]`)
 - Pass an array to initialize forms using `generateForm`.
   - Each element of the passed array is used as the parameter of `generateForm`.
-- If the parameter of `generateForm` is optional, you can also pass a number greater than 0 instead of an array.
+- If the parameter of `generateForm` is optional, you can also pass an integer greater than or equal to 0 instead of an array.
 - `[]` and `0` have equivalent meaning.
 
 ### `schema` (Optional)
