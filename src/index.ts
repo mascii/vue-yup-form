@@ -241,21 +241,20 @@ export function isValidForm<T extends Form>(
   form: T | (T & { $key: number })
 ): boolean {
   for (const value of Object.values(form)) {
+    if (typeof value !== "object") {
+      continue;
+    }
+
     if (value instanceof Field) {
-      if (value.$error !== undefined) {
+      if (value.$error) {
         return false;
       }
-    } else if (value instanceof FormsField) {
-      if (
-        value.$error !== undefined ||
-        value.$forms.some((form) => !isValidForm(form))
-      ) {
+    } else if ("$forms" in value) {
+      if (value.$error || value.$forms.some((form) => !isValidForm(form))) {
         return false;
       }
-    } else if (typeof value === "object") {
-      if (!isValidForm(value)) {
-        return false;
-      }
+    } else if (!isValidForm(value)) {
+      return false;
     }
   }
   return true;
@@ -279,15 +278,17 @@ export function toObject<T extends Form>(
   const obj: any = {};
 
   for (const [key, value] of Object.entries(form)) {
-    if (value instanceof PrivateField) {
+    if (typeof value !== "object") {
       continue;
     }
 
     if (value instanceof Field) {
-      obj[key] = value.$value;
-    } else if (value instanceof FormsField) {
+      if (!(value instanceof PrivateField)) {
+        obj[key] = value.$value;
+      }
+    } else if ("$forms" in value) {
       obj[key] = value.$forms.map((form) => toObject(form));
-    } else if (typeof value === "object") {
+    } else {
       obj[key] = toObject(value);
     }
   }
