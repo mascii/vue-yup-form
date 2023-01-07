@@ -23,9 +23,9 @@ An object that satisfies the following:
 type Form = {
   [key: `$${string}`]: never;
   [key: string]:
-    | Field
-    | PrivateField
-    | FormsField
+    | Field<any>
+    | PrivateField<any>
+    | FormsField<(arg: any) => Form>
     | ((...args: any[]) => any)
     | Form;
 };

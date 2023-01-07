@@ -21,9 +21,9 @@ import type {
 type Form = {
   [key: `$${string}`]: never;
   [key: string]:
-    | Field
-    | PrivateField
-    | FormsField
+    | Field<any>
+    | PrivateField<any>
+    | FormsField<(arg: any) => Form>
     | ((...args: any[]) => any)
     | Form;
 };
@@ -32,7 +32,7 @@ export type FormPropType<T extends () => Form> = PropType<
   ReturnType<T> & { $key?: number }
 >;
 
-class Field<T = any> {
+class Field<T> {
   private readonly $valueRef: Ref<T>;
   private readonly $errorRef: ComputedRef<yup.ValidationError | undefined>;
   public readonly $label: string;
@@ -88,12 +88,12 @@ class Field<T = any> {
   }
 }
 
-class PrivateField<T = any> extends Field<T> {
+class PrivateField<T> extends Field<T> {
   // Distinguish between Field and PrivateField in the structural type system
   private readonly __isPrivateField!: true;
 }
 
-class FormsField<T extends (arg: any) => Form = (arg: any) => Form> {
+class FormsField<T extends (arg: any) => Form> {
   private readonly $generateFormWithKey: (
     initialValue: FirstParameter<T>
   ) => ReturnType<T> & { $key: number };
@@ -261,13 +261,13 @@ export function isValidForm<T extends Form>(
 }
 
 type ToObjectOutput<T extends Form> = {
-  [K in keyof T as T[K] extends PrivateField | ((...args: any[]) => any)
+  [K in keyof T as T[K] extends PrivateField<any> | ((...args: any[]) => any)
     ? never
     : Exclude<K, "$key">]: T[K] extends Form
     ? ToObjectOutput<T[K]>
-    : T[K] extends Field
+    : T[K] extends Field<any>
     ? T[K]["$value"]
-    : T[K] extends FormsField
+    : T[K] extends FormsField<(arg: any) => Form>
     ? ToObjectOutput<T[K]["$forms"][number]>[]
     : never;
 };
