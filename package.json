@@ -36,8 +36,7 @@
   },
   "scripts": {
     "build": "tsup src/index.ts src/yup.ts --external './yup' --format cjs,esm --dts --clean",
-    "lint": "prettier ./{src,__tests__}/ --check",
-    "lint:fix": "nr lint --write",
+    "format": "prettier ./{src,__tests__}/ --write",
     "test": "nr test:vue3 && nr test:vue2 && vue-demi-switch 3",
     "test:vue2": "vue-demi-switch 2.7 vue2 && vitest run --config ./config/vitest.ts --coverage",
     "test:vue3": "vue-demi-switch 3 vue && vitest run --config ./config/vitest.ts --coverage",
