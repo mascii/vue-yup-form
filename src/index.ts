@@ -18,7 +18,7 @@ import type {
   FormsFieldSchema,
 } from "./types";
 
-type Form = {
+export type Form = {
   [key: `$${string}`]: never;
   [key: string]:
     | Field<any>
