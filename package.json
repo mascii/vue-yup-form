@@ -46,7 +46,7 @@
     "docs:serve": "vitepress serve docs"
   },
   "dependencies": {
-    "vue-demi": "^0.13.7"
+    "vue-demi": "^0.13.11"
   },
   "peerDependencies": {
     "vue": "^2.0.0 || >=3.0.0",
