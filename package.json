@@ -30,6 +30,7 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/mascii/vue-yup-form.git"
