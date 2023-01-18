@@ -2,11 +2,11 @@
 layout: home
 
 title: vue-yup-form
-titleTemplate: Composition API & Yup Powered Form Validation
+titleTemplate: Headless form validation with Vue and Yup
 
 hero:
   name: vue-yup-form
-  text: Composition API & Yup Powered Form Validation
+  text: "Headless form validation with Vue and Yup"
   tagline: This tiny library allows Vue and Yup to be a best friend.
   actions:
     - theme: brand

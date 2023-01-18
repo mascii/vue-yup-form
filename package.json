@@ -1,7 +1,7 @@
 {
   "name": "vue-yup-form",
   "version": "1.0.0-beta.8",
-  "description": "Composition API & Yup Powered Form Validation",
+  "description": "Headless form validation with Vue and Yup",
   "keywords": [
     "vue",
     "yup",

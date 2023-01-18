@@ -1,5 +1,5 @@
 # vue-yup-form
-Composition API & Yup Powered Form Validation. This tiny library allows Vue and Yup to be a best friend.
+Headless form validation with Vue and Yup. This tiny library allows Vue and Yup to be a best friend.
 
 ## Requirements
 The following versions are supported:
