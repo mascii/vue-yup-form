@@ -13,10 +13,10 @@ yarn add yup vue-yup-form
 ```
 
 ## Architecture
+- Headless form validation: i.e. vue-yup-form does not export UI-related components.
 - High version compatibility
   - both Vue 2 and 3 are supported (powered by [vue-demi](https://github.com/vueuse/vue-demi))
   - yup next (`1.0.0-beta`) is also supported
-- Everyone has their own UI/UX they want to provide, so vue-yup-form does not export UI-related components for forms (such as `<Input>`).
 - This library is inspired by [`useValidation()` in vue-composable](https://pikax.me/vue-composable/composable/validation/validation.html).
 
 ## Code
