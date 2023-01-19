@@ -1,5 +1,11 @@
 # vue-yup-form
-Headless form validation with Vue and Yup. This tiny library allows Vue and Yup to be a best friend.
+<p align="center">
+<a href="https://github.com/mascii/vue-yup-form">
+  <img src="https://raw.githubusercontent.com/mascii/vue-yup-form/main/docs/public/logo.svg" alt="vue-yup-form - Headless form validation with Vue and Yup" width="250">
+</a>
+<br>
+Headless form validation with Vue and Yup
+</p>
 
 ## Requirements
 The following versions are supported:

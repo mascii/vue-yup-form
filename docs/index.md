@@ -8,6 +8,9 @@ hero:
   name: vue-yup-form
   text: "Headless form validation with Vue and Yup"
   tagline: This tiny library allows Vue and Yup to be a best friend.
+  image:
+    src: /logo.svg
+    alt: vue-yup-form
   actions:
     - theme: brand
       text: Get Started

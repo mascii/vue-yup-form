@@ -4,11 +4,15 @@ export default defineConfig({
   title: "vue-yup-form",
   description: "Headless form validation with Vue and Yup",
   themeConfig: {
+    logo: "/logo.svg",
     sidebar: sidebarGuide(),
     socialLinks: [
       { icon: "github", link: "https://github.com/mascii/vue-yup-form" },
     ],
   },
+  head: [
+    ["link", { rel: "icon", href: "/logo.svg", type: "image/svg+xml" }],
+  ]
 });
 
 function sidebarGuide() {
