@@ -9,11 +9,15 @@ export default defineConfig({
     socialLinks: [
       { icon: "github", link: "https://github.com/mascii/vue-yup-form" },
     ],
+    editLink: {
+      pattern: "https://github.com/mascii/vue-yup-form/tree/main/docs/:path",
+      text: "Suggest changes to this page",
+    },
   },
   head: [
     ["link", { rel: "icon", href: "/favicon-32x32.png", type: "image/png" }],
     ["link", { rel: "icon", href: "/logo.svg", type: "image/svg+xml" }],
-  ]
+  ],
 });
 
 function sidebarGuide() {
