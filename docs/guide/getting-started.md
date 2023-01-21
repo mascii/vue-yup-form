@@ -23,7 +23,7 @@ yarn add yup vue-yup-form
 Here's an example using [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html):
 
 ```vue
-<script lang="ts" setup>
+<script setup lang="ts">
 import { defineForm, field } from "vue-yup-form";
 import * as yup from "yup";
 
