@@ -71,16 +71,16 @@ Since `validateSync()` is used internally, Async tests are not available.
 ### `$value` property
 - The field value that can be set to `v-model`.
 
-### `$error` property (Readonly)
+### `$error` property <Badge type="info" text="Readonly" />
 - Returns a result of validating `$value` reactively with the yup schema.
   - If `$value` is invalid, `yup.ValidationError` is returned.
   - If `$value` is valid, `undefined` is returned.
 
-### `$errorMessages` property (Readonly)
+### `$errorMessages` property <Badge type="info" text="Readonly" />
 - Returns an error messages array (`string[]`) reactively as well as `$error` property.
   - If `abortEarly` is false, it can return more than one element.
 
-### `$label` property (Readonly)
+### `$label` property <Badge type="info" text="Readonly" />
 - Returns the label of the yup schema.
   - For example, if you pass `yup.number().label("Age")`, you will obtain `"Age"`.
   - If the `schema` you passed is a function, the function is evaluated once when the object is created.
