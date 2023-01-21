@@ -63,6 +63,6 @@
     "vitepress": "^1.0.0-alpha.40",
     "vitest": "^0.27.2",
     "vue": "^3.2.45",
-    "vue2": "npm:vue@^2.7.8"
+    "vue2": "npm:vue@^2.7.14"
   }
 }
