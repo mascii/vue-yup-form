@@ -30,6 +30,31 @@ export default defineConfig({
   head: [
     ["link", { rel: "icon", href: "/favicon-32x32.png", type: "image/png" }],
     ["link", { rel: "icon", href: "/logo.svg", type: "image/svg+xml" }],
+    ["meta", { name: "author", content: "mascii" }],
+    ["meta", { property: "og:title", content: "vue-yup-form" }],
+    [
+      "meta",
+      {
+        property: "og:image",
+        content: "https://vue-yup-form.pages.dev/og.png",
+      },
+    ],
+    [
+      "meta",
+      {
+        property: "og:description",
+        content: "Headless form validation with Vue and Yup",
+      },
+    ],
+    ["meta", { name: "twitter:card", content: "summary_large_image" }],
+    ["meta", { name: "twitter:creator", content: "@mascii_k" }],
+    [
+      "meta",
+      {
+        name: "twitter:image",
+        content: "https://vue-yup-form.pages.dev/og.png",
+      },
+    ],
   ],
 });
 
