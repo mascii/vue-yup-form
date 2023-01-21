@@ -1,11 +1,24 @@
 import { defineConfig } from "vitepress";
 
+import { version } from "../../package.json";
+
 export default defineConfig({
   title: "vue-yup-form",
   description: "Headless form validation with Vue and Yup",
   themeConfig: {
     logo: "/logo.svg",
     sidebar: sidebarGuide(),
+    nav: [
+      {
+        text: `v${version}`,
+        items: [
+          {
+            text: "Release Notes",
+            link: "https://github.com/mascii/vue-yup-form/releases",
+          },
+        ],
+      },
+    ],
     socialLinks: [
       { icon: "github", link: "https://github.com/mascii/vue-yup-form" },
     ],
