@@ -37,6 +37,18 @@ export default defineComponent({
 </script>
 ```
 
+::: tip
+If you want to use `<script setup lang="ts">` and define props with pure types via a generic type argument, use `ReturnType` as follows:
+
+```vue
+<script setup lang="ts">
+defineProps<{
+  userForm: ReturnType<typeof generateUserForm> & { $key: number };
+}>();
+</script>
+```
+:::
+
 ::: warning
 Note that components using this type are in violation of [`vue/no-mutating-props`](https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/rules/no-mutating-props.md).
 To avoid `vue/no-mutating-props`, prepend `$props.` in `v-model`.
