@@ -21,6 +21,7 @@ console.info(`vue-yup-form version: ${vueYupFormVersion}`);
 export default {
   ...DefaultTheme,
   enhanceApp({ app }) {
+    DefaultTheme.enhanceApp.apply(this, arguments);
     app.component("CodeSandbox", CodeSandbox);
   },
 };
