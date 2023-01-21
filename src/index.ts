@@ -33,8 +33,8 @@ export type FormPropType<T extends () => Form> = PropType<
 >;
 
 class Field<T> {
-  private readonly $valueRef: Ref<T>;
-  private readonly $errorRef: ComputedRef<yup.ValidationError | undefined>;
+  private readonly $_valueRef: Ref<T>;
+  private readonly $_errorRef: ComputedRef<yup.ValidationError | undefined>;
   public readonly $label: string;
 
   constructor(
@@ -42,11 +42,11 @@ class Field<T> {
     schema?: FieldSchema,
     validateOptions?: ValidateOptions
   ) {
-    this.$valueRef = isRef(value) ? value : shallowRef(value);
+    this.$_valueRef = isRef(value) ? value : shallowRef(value);
 
     const initialSchema = typeof schema === "function" ? schema() : schema;
     const isNumberSchemaField = initialSchema instanceof NumberSchema;
-    this.$errorRef = computed(
+    this.$_errorRef = computed(
       schema
         ? () => {
             const obtainedSchema =
@@ -54,9 +54,9 @@ class Field<T> {
 
             // Changing `<input type="number" v-model.number="foo" />` to blank, `foo` is set to empty string.
             const targetValue =
-              isNumberSchemaField && typeof this.$valueRef.value !== "number"
+              isNumberSchemaField && typeof this.$_valueRef.value !== "number"
                 ? undefined
-                : this.$valueRef.value;
+                : this.$_valueRef.value;
 
             try {
               obtainedSchema.validateSync(targetValue, validateOptions);
@@ -73,32 +73,32 @@ class Field<T> {
   }
 
   public get $value(): T {
-    return this.$valueRef.value;
+    return this.$_valueRef.value;
   }
   public set $value(value) {
-    this.$valueRef.value = value;
+    this.$_valueRef.value = value;
   }
 
   public get $error(): yup.ValidationError | undefined {
-    return this.$errorRef.value;
+    return this.$_errorRef.value;
   }
 
   public get $errorMessages(): string[] {
-    return this.$errorRef.value?.errors || [];
+    return this.$_errorRef.value?.errors || [];
   }
 }
 
 class PrivateField<T> extends Field<T> {
   // Distinguish between Field and PrivateField in the structural type system
-  private readonly __isPrivateField!: true;
+  private readonly $_isPrivateField!: true;
 }
 
 class FormsField<T extends (arg: any) => Form> {
   private readonly $generateFormWithKey: (
     initialValue: FirstParameter<T>
   ) => ReturnType<T> & { $key: number };
-  private readonly $formsRef: Ref<(ReturnType<T> & { $key: number })[]>;
-  private readonly $errorRef: ComputedRef<yup.ValidationError | undefined>;
+  private readonly $_formsRef: Ref<(ReturnType<T> & { $key: number })[]>;
+  private readonly $_errorRef: ComputedRef<yup.ValidationError | undefined>;
   public readonly $label: string;
 
   constructor(
@@ -114,10 +114,10 @@ class FormsField<T extends (arg: any) => Form> {
       return form as ReturnType<T> & { $key: number };
     };
 
-    this.$formsRef = shallowRef([]);
+    this.$_formsRef = shallowRef([]);
     this.$initialize(initialValueListOrLength);
 
-    this.$errorRef = computed(
+    this.$_errorRef = computed(
       schema
         ? () => {
             const obtainedSchema =
@@ -125,7 +125,7 @@ class FormsField<T extends (arg: any) => Form> {
 
             try {
               obtainedSchema.validateSync(
-                this.$formsRef.value,
+                this.$_formsRef.value,
                 validateOptions
               );
             } catch (e: any) {
@@ -143,22 +143,22 @@ class FormsField<T extends (arg: any) => Form> {
   }
 
   public get $forms(): readonly (ReturnType<T> & { $key: number })[] {
-    return this.$formsRef.value;
+    return this.$_formsRef.value;
   }
 
   public get $writableForms(): (ReturnType<T> & { $key: number })[] {
-    return this.$formsRef.value;
+    return this.$_formsRef.value;
   }
   public set $writableForms(value) {
-    this.$formsRef.value = value;
+    this.$_formsRef.value = value;
   }
 
   public get $error(): yup.ValidationError | undefined {
-    return this.$errorRef.value;
+    return this.$_errorRef.value;
   }
 
   public get $errorMessages(): string[] {
-    return this.$errorRef.value?.errors || [];
+    return this.$_errorRef.value?.errors || [];
   }
 
   public $initialize(
@@ -169,7 +169,7 @@ class FormsField<T extends (arg: any) => Form> {
         ? ([...Array(initialValueListOrLength)] as undefined[])
         : initialValueListOrLength;
 
-    this.$formsRef.value = initialValueList.map((initialValue) =>
+    this.$_formsRef.value = initialValueList.map((initialValue) =>
       this.$generateFormWithKey(initialValue)
     );
   }
@@ -180,9 +180,9 @@ class FormsField<T extends (arg: any) => Form> {
       : [initialValue: FirstParameter<T>]
   ): void;
   public $append(initialValue?: FirstParameter<T>): void {
-    const forms = this.$formsRef.value.slice();
+    const forms = this.$_formsRef.value.slice();
     forms.push(this.$generateFormWithKey(initialValue));
-    this.$formsRef.value = forms;
+    this.$_formsRef.value = forms;
   }
 
   public $prepend(
@@ -191,15 +191,15 @@ class FormsField<T extends (arg: any) => Form> {
       : [initialValue: FirstParameter<T>]
   ): void;
   public $prepend(initialValue?: FirstParameter<T>): void {
-    const forms = this.$formsRef.value.slice();
+    const forms = this.$_formsRef.value.slice();
     forms.unshift(this.$generateFormWithKey(initialValue));
-    this.$formsRef.value = forms;
+    this.$_formsRef.value = forms;
   }
 
   public $remove(index: number): void {
-    const forms = this.$formsRef.value.slice();
-    forms.splice(index + (index < 0 ? this.$formsRef.value.length : 0), 1);
-    this.$formsRef.value = forms;
+    const forms = this.$_formsRef.value.slice();
+    forms.splice(index + (index < 0 ? this.$_formsRef.value.length : 0), 1);
+    this.$_formsRef.value = forms;
   }
 }
 
