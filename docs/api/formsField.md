@@ -9,24 +9,24 @@ The `formsField()` takes 4 parameters:
 function formsField<T extends (arg: any) => Form>(generateForm: T, initialValueListOrLength?: (undefined extends FirstParameter<T> ? number : 0) | FirstParameter<T>[], schema?: FormsFieldSchema<ReturnType<T>>, validateOptions?: ValidateOptions): FormsField<T>
 ```
 
-### `generateForm` <Badge type="danger" text="Required" />
+### 1. `generateForm` <Badge type="danger" text="Required" />
 - Pass a function that returns a form with 0 or 1 parameter.
   - A form should be defined using [`defineForm()`](/api/defineForm).
 
-### `initialValueListOrLength` <Badge type="info" text="Optional / Default: []" />
+### 2. `initialValueListOrLength` <Badge type="info" text="Optional / Default: []" />
 - Pass an array to initialize forms using `generateForm`.
   - Each element of the passed array is used as the parameter of `generateForm`.
 - If the parameter of `generateForm` is optional, you can also pass an integer greater than or equal to 0 instead of an array.
 - `[]` and `0` have equivalent meaning.
 
-### `schema` <Badge type="info" text="Optional" />
+### 3. `schema` <Badge type="info" text="Optional" />
 - Pass a yup *array* schema or a function that returns a yup *array* schema.
   - If you pass a function, the first argument is a *type bound* `yup.ArraySchema` object.
     - The same type as `$forms` is available in the `test()` method of `yup.ArraySchema`.
   - If you pass a function, you can refer to `$value` of other fields.
 - For example, use to check that the length of `$forms` is greater than 0.
 
-### `validateOptions` <Badge type="info" text="Optional" />
+### 4. `validateOptions` <Badge type="info" text="Optional" />
 - Pass `{ abortEarly: false }` if all validation errors by the yup array schema are required.
 
 ## Details of `FormsField` object

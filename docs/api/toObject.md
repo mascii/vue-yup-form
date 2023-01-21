@@ -9,7 +9,7 @@ The `toObject()` takes 1 parameter:
 function toObject<T extends Form>(form: T | (T & { $key: number; })): Expand<ToObjectOutput<T>>
 ```
 
-### `forms` <Badge type="danger" text="Required" />
+### 1. `forms` <Badge type="danger" text="Required" />
 - A form should be defined using [`defineForm()`](/api/defineForm).
 
 ## Example
