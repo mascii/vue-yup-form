@@ -9,5 +9,5 @@ The `isValidForm()` takes 1 parameter:
 function isValidForm<T extends Form>(form: T | (T & { $key: number; })): boolean
 ```
 
-### `forms` (Required)
+### `forms` <Badge type="danger" text="Required" />
 - A form should be defined using [`defineForm()`](/api/defineForm).

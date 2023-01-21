@@ -9,7 +9,7 @@ The `field()` takes 3 parameters:
 function field<T>(value: T | Ref<T>, schema?: FieldSchema, validateOptions?: ValidateOptions): Field<T>
 ```
 
-### `value` (Required)
+### `value` <Badge type="danger" text="Required" />
 - Pass an initial value like such as `string`, `number`, `boolean`, and `string[]` types.
 
 ::: tip
@@ -32,7 +32,7 @@ const point = field(
 ```
 :::
 
-### `schema` (Optional)
+### `schema` <Badge type="info" text="Optional" />
 - Pass a yup schema or a function that returns a yup schema.
   - If you pass a function, you can refer to `$value` of other fields.
 
@@ -64,7 +64,7 @@ console.log(age.$error.message); // this is a required field
 Since `validateSync()` is used internally, Async tests are not available.
 :::
 
-### `validateOptions` (Optional)
+### `validateOptions` <Badge type="info" text="Optional" />
 - Pass `{ abortEarly: false }` if all validation errors by the yup schema are required.
 
 ## Details of `Field` object
