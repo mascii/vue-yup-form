@@ -44,13 +44,13 @@ class Field<T> {
   ) {
     this.$_valueRef = isRef(value) ? value : shallowRef(value);
 
-    const initialSchema = typeof schema === "function" ? schema() : schema;
+    const isSchemaTypeFunction = typeof schema === "function";
+    const initialSchema = isSchemaTypeFunction ? schema() : schema;
     const isNumberSchemaField = initialSchema instanceof NumberSchema;
     this.$_errorRef = computed(
       schema
         ? () => {
-            const obtainedSchema =
-              typeof schema === "function" ? schema() : schema;
+            const obtainedSchema = isSchemaTypeFunction ? schema() : schema;
 
             // Changing `<input type="number" v-model.number="foo" />` to blank, `foo` is set to empty string.
             const targetValue =
@@ -117,11 +117,13 @@ class FormsField<T extends (arg: any) => Form> {
     this.$_formsRef = shallowRef([]);
     this.$initialize(initialValueListOrLength);
 
+    const isSchemaTypeFunction = typeof schema === "function";
     this.$_errorRef = computed(
       schema
         ? () => {
-            const obtainedSchema =
-              typeof schema === "function" ? schema(new ArraySchema()) : schema;
+            const obtainedSchema = isSchemaTypeFunction
+              ? schema(new ArraySchema())
+              : schema;
 
             try {
               obtainedSchema.validateSync(
@@ -137,8 +139,9 @@ class FormsField<T extends (arg: any) => Form> {
         : () => undefined
     );
 
-    const initialSchema =
-      typeof schema === "function" ? schema(new ArraySchema()) : schema;
+    const initialSchema = isSchemaTypeFunction
+      ? schema(new ArraySchema())
+      : schema;
     this.$label = initialSchema?.describe().label || "";
   }
 
