@@ -1,5 +1,7 @@
 import DefaultTheme from "vitepress/theme";
 
+import { ref } from "vue";
+import { version as vueVersion } from "vue/package.json";
 import * as yup from "yup";
 import { version as yupVersion } from "yup/package.json";
 import * as vueYupForm from "../../../src/index";
@@ -9,12 +11,13 @@ import "./styles/vars.css";
 
 import CodeSandbox from "../../components/CodeSandbox.vue";
 
-Object.assign(globalThis, { yup }, vueYupForm);
+Object.assign(globalThis, { ref }, { yup }, vueYupForm);
 
 console.info(
   "%cFeel free to try sample codes here",
   "background: #222; color: #EE6A55"
 );
+console.info(`vue version: ${vueVersion}`);
 console.info(`yup version: ${yupVersion}`);
 console.info(`vue-yup-form version: ${vueYupFormVersion}`);
 
