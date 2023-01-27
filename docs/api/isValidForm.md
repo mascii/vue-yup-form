@@ -6,7 +6,9 @@ This function returns boolean.
 The `isValidForm()` takes 1 parameter:
 
 ```typescript
-function isValidForm<T extends Form>(form: T | (T & { $key: number; })): boolean
+function isValidForm<T extends Form>(
+  form: T | (T & { $key: number })
+): boolean;
 ```
 
 ### 1. `forms` <Badge type="danger" text="Required" />

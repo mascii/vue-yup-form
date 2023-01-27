@@ -6,7 +6,12 @@ This function returns `FormsField` object.
 The `formsField()` takes 4 parameters:
 
 ```typescript
-function formsField<T extends (arg: any) => Form>(generateForm: T, initialValueListOrLength?: (undefined extends FirstParameter<T> ? number : 0) | FirstParameter<T>[], schema?: FormsFieldSchema<ReturnType<T>>, validateOptions?: ValidateOptions): FormsField<T>
+function formsField<T extends (arg: any) => Form>(
+  generateForm: T,
+  initialValueListOrLength: InitialValueListOrLength<T> = [],
+  schema?: FormsFieldSchema<ReturnType<T>>,
+  validateOptions?: ValidateOptions
+): FormsField<T>;
 ```
 
 ### 1. `generateForm` <Badge type="danger" text="Required" />

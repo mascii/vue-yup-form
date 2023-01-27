@@ -6,7 +6,9 @@ This function does not check if the form is valid.
 The `toObject()` takes 1 parameter:
 
 ```typescript
-function toObject<T extends Form>(form: T | (T & { $key: number; })): Expand<ToObjectOutput<T>>
+function toObject<T extends Form>(
+  form: T | (T & { $key: number })
+): Expand<ToObjectOutput<T>>;
 ```
 
 ### 1. `forms` <Badge type="danger" text="Required" />
