@@ -3,10 +3,14 @@ This function takes an initial value and a yup schema.
 This function returns `Field` object.
 
 ## Parameters
-The `field()` takes 3 parameters:
+The `field()` takes 3 parameters and 2 generic type parameters:
 
 ```typescript
-function field<T>(value: T | Ref<T>, schema?: FieldSchema, validateOptions?: ValidateOptions): Field<T>
+function field<T, U extends T = T>(
+  value: T | Ref<T>,
+  schema?: FieldSchema,
+  validateOptions?: ValidateOptions
+): Field<T, T extends U ? T : U>;
 ```
 
 ### 1. `value` <Badge type="danger" text="Required" />
@@ -66,6 +70,12 @@ Since `validateSync()` is used internally, Async tests are not available.
 
 ### 3. `validateOptions` <Badge type="info" text="Optional" />
 - Pass `{ abortEarly: false }` if all validation errors by the yup schema are required.
+
+### `T` <Badge type="info" text="Optional" />
+- Pass the type of `$value` explicitly like `ref<T>()`.
+
+### `U` <Badge type="info" text="Optional / Default: T" />
+- Pass the preferred type as the result of [`toObject()`](/api/toObject).
 
 ## Details of `Field` object
 ### `$value` property

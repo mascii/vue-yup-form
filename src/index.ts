@@ -32,7 +32,7 @@ export type FormPropType<T extends () => Form> = PropType<
   ReturnType<T> & { $key?: number }
 >;
 
-class Field<T> {
+class Field<T, U extends T = T> {
   private readonly $_valueRef: Ref<T>;
   private readonly $_errorRef: ComputedRef<yup.ValidationError | undefined>;
   public readonly $label: string;
@@ -210,11 +210,11 @@ export function defineForm<T extends Form>(form: T): T {
   return form;
 }
 
-export function field<T>(
+export function field<T, U extends T = T>(
   value: T | Ref<T>,
   schema?: FieldSchema,
   validateOptions?: ValidateOptions
-): Field<T> {
+): Field<T, T extends U ? T : U> {
   return new Field(value, schema, validateOptions);
 }
 
@@ -268,8 +268,8 @@ type ToObjectOutput<T extends Form> = {
     ? never
     : Exclude<K, "$key">]: T[K] extends Form
     ? ToObjectOutput<T[K]>
-    : T[K] extends Field<any>
-    ? T[K]["$value"]
+    : T[K] extends Field<any, infer U>
+    ? U
     : T[K] extends FormsField<(arg: any) => Form>
     ? ToObjectOutput<T[K]["$forms"][number]>[]
     : never;
