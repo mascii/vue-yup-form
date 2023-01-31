@@ -84,7 +84,7 @@ describe("toObject", () => {
       b: "B",
     });
 
-    form.a.$forms[1].text.$value = "world";
+    form.a.$forms[1]!.text.$value = "world";
     expect(toObject(form)).toEqual({
       a: [{ text: "hello" }, { text: "world" }],
       b: "B",

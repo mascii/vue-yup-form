@@ -7,6 +7,7 @@
     "esModuleInterop": true,
     "outDir": "dist",
     "strict": true,
+    "noUncheckedIndexedAccess": true,
     "types": ["vitest/globals"],
     "declaration": true
   },
