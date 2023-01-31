@@ -266,12 +266,12 @@ export function isValidForm<T extends Form>(
 type ToObjectOutput<T extends Form> = {
   [K in keyof T as T[K] extends PrivateField<any> | ((...args: any[]) => any)
     ? never
-    : Exclude<K, "$key">]: T[K] extends Form
+    : K]: T[K] extends Form
     ? ToObjectOutput<T[K]>
     : T[K] extends Field<any, infer U>
     ? U
-    : T[K] extends FormsField<(arg: any) => Form>
-    ? ToObjectOutput<T[K]["$forms"][number]>[]
+    : T[K] extends FormsField<infer U>
+    ? ToObjectOutput<ReturnType<U>>[]
     : never;
 };
 
