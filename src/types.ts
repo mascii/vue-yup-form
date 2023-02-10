@@ -16,7 +16,7 @@ export type ValidateOptions = {
 
 type IfYupVersion1_0_0<Y, N> = keyof yup.Schema extends never
   ? N // tested with yup@0.32.11
-  : Y; // tested with yup@1.0.0-beta.4
+  : Y; // tested with yup@1.0.0
 
 type YupSchema = IfYupVersion1_0_0<yup.Schema, yup.AnySchema>;
 export type FieldSchema = YupSchema | (() => YupSchema);
