@@ -21,32 +21,32 @@ const generateFormWithOptionalParameter = (initialText = "default") =>
 describe("formsField", () => {
   test("initialize formsField with generateForm function", () => {
     const formsFieldObject1 = formsField(generateFormWithNoParameter, 3);
-    expect(formsFieldObject1.$forms[0].text.$value).toBe("");
-    expect(formsFieldObject1.$forms[1].text.$value).toBe("");
-    expect(formsFieldObject1.$forms[2].text.$value).toBe("");
+    expect(formsFieldObject1.$forms[0]!.text.$value).toBe("");
+    expect(formsFieldObject1.$forms[1]!.text.$value).toBe("");
+    expect(formsFieldObject1.$forms[2]!.text.$value).toBe("");
 
     const formsFieldObject2 = formsField(generateFormWithRequiredParameter, [
       "A",
       "B",
       "C",
     ]);
-    expect(formsFieldObject2.$forms[0].text.$value).toBe("A");
-    expect(formsFieldObject2.$forms[1].text.$value).toBe("B");
-    expect(formsFieldObject2.$forms[2].text.$value).toBe("C");
+    expect(formsFieldObject2.$forms[0]!.text.$value).toBe("A");
+    expect(formsFieldObject2.$forms[1]!.text.$value).toBe("B");
+    expect(formsFieldObject2.$forms[2]!.text.$value).toBe("C");
 
     const formsFieldObject3 = formsField(generateFormWithOptionalParameter, 3);
-    expect(formsFieldObject3.$forms[0].text.$value).toBe("default");
-    expect(formsFieldObject3.$forms[1].text.$value).toBe("default");
-    expect(formsFieldObject3.$forms[2].text.$value).toBe("default");
+    expect(formsFieldObject3.$forms[0]!.text.$value).toBe("default");
+    expect(formsFieldObject3.$forms[1]!.text.$value).toBe("default");
+    expect(formsFieldObject3.$forms[2]!.text.$value).toBe("default");
 
     const formsFieldObject4 = formsField(generateFormWithOptionalParameter, [
       "A",
       undefined,
       "C",
     ]);
-    expect(formsFieldObject4.$forms[0].text.$value).toBe("A");
-    expect(formsFieldObject4.$forms[1].text.$value).toBe("default");
-    expect(formsFieldObject4.$forms[2].text.$value).toBe("C");
+    expect(formsFieldObject4.$forms[0]!.text.$value).toBe("A");
+    expect(formsFieldObject4.$forms[1]!.text.$value).toBe("default");
+    expect(formsFieldObject4.$forms[2]!.text.$value).toBe("C");
   });
 
   test("no schema was given", () => {
@@ -82,7 +82,7 @@ describe("formsField", () => {
     );
     expect(formsFieldObject.$error).toBeUndefined();
 
-    formsFieldObject.$forms[2].text.$value += "k";
+    formsFieldObject.$forms[2]!.text.$value += "k";
     expect(formsFieldObject.$error).toBeInstanceOf(yup.ValidationError);
   });
 
@@ -191,36 +191,36 @@ describe("formsField", () => {
 
     formsFieldObject.$initialize(["A", "B", "C"]);
     expect(formsFieldObject.$forms).toHaveLength(3);
-    expect(formsFieldObject.$forms[0].text.$value).toBe("A");
-    expect(formsFieldObject.$forms[1].text.$value).toBe("B");
-    expect(formsFieldObject.$forms[2].text.$value).toBe("C");
+    expect(formsFieldObject.$forms[0]!.text.$value).toBe("A");
+    expect(formsFieldObject.$forms[1]!.text.$value).toBe("B");
+    expect(formsFieldObject.$forms[2]!.text.$value).toBe("C");
 
     formsFieldObject.$initialize();
     expect(formsFieldObject.$forms).toHaveLength(0);
 
     formsFieldObject.$initialize(3);
     expect(formsFieldObject.$forms).toHaveLength(3);
-    expect(formsFieldObject.$forms[0].text.$value).toBe("default");
-    expect(formsFieldObject.$forms[1].text.$value).toBe("default");
-    expect(formsFieldObject.$forms[2].text.$value).toBe("default");
+    expect(formsFieldObject.$forms[0]!.text.$value).toBe("default");
+    expect(formsFieldObject.$forms[1]!.text.$value).toBe("default");
+    expect(formsFieldObject.$forms[2]!.text.$value).toBe("default");
   });
   test("parameter of $append()", async () => {
     const formsFieldObject = formsField(generateFormWithOptionalParameter);
 
     formsFieldObject.$append();
-    expect(formsFieldObject.$forms[0].text.$value).toBe("default");
+    expect(formsFieldObject.$forms[0]!.text.$value).toBe("default");
 
     formsFieldObject.$append("hello");
-    expect(formsFieldObject.$forms[1].text.$value).toBe("hello");
+    expect(formsFieldObject.$forms[1]!.text.$value).toBe("hello");
   });
   test("parameter of $prepend()", async () => {
     const formsFieldObject = formsField(generateFormWithOptionalParameter);
 
     formsFieldObject.$prepend();
-    expect(formsFieldObject.$forms[0].text.$value).toBe("default");
+    expect(formsFieldObject.$forms[0]!.text.$value).toBe("default");
 
     formsFieldObject.$prepend("hello");
-    expect(formsFieldObject.$forms[0].text.$value).toBe("hello");
+    expect(formsFieldObject.$forms[0]!.text.$value).toBe("hello");
   });
   test("parameter of $remove()", async () => {
     const formsFieldObject = formsField(generateFormWithOptionalParameter, 5);

@@ -70,7 +70,7 @@ describe("isValidForm", () => {
     form.a.$append();
     expect(isValidForm(form)).toBe(false);
 
-    form.a.$forms[1].text.$value = "world";
+    form.a.$forms[1]!.text.$value = "world";
     expect(isValidForm(form)).toBe(true);
   });
 });
