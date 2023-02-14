@@ -6,7 +6,7 @@ This function does not check if the form is valid.
 The `toObject()` takes 1 parameter:
 
 ```typescript
-function toObject<T extends Form>(
+declare function toObject<T extends Form>(
   form: T | (T & { $key: number })
 ): Expand<ToObjectOutput<T>>;
 ```
