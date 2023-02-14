@@ -210,11 +210,21 @@ export function defineForm<T extends Form>(form: T): T {
   return form;
 }
 
-export function field<T, U extends T = T>(
+export function field<T>(
   value: T | Ref<T>,
   schema?: FieldSchema,
   validateOptions?: ValidateOptions
-): Field<T, T extends U ? T : U> {
+): Field<T, T>;
+export function field<T, U extends T>(
+  value: T | Ref<T>,
+  schema?: FieldSchema,
+  validateOptions?: ValidateOptions
+): Field<T, U>;
+export function field<T>(
+  value: T | Ref<T>,
+  schema?: FieldSchema,
+  validateOptions?: ValidateOptions
+) {
   return new Field(value, schema, validateOptions);
 }
 
