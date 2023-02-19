@@ -9,7 +9,7 @@ import { version as vueYupFormVersion } from "../../../package.json";
 
 import "./styles/vars.css";
 
-import CodeSandbox from "../../components/CodeSandbox.vue";
+import StackBlitz from "../../components/StackBlitz.vue";
 
 Object.assign(globalThis, { ref }, { yup }, vueYupForm);
 
@@ -25,6 +25,6 @@ export default {
   ...DefaultTheme,
   enhanceApp({ app }) {
     DefaultTheme.enhanceApp.apply(this, arguments);
-    app.component("CodeSandbox", CodeSandbox);
+    app.component("StackBlitz", StackBlitz);
   },
 };
