@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { PropType } from "vue";
+import { ref, type PropType } from "vue";
+import { useIntersectionObserver } from "@vueuse/core";
 
 const props = defineProps({
   repoPath: {
@@ -20,13 +21,27 @@ const props = defineProps({
   },
 });
 
+const target = ref<HTMLIFrameElement | null>(null);
+const targetIsVisible = ref(false);
+
+const { stop } = useIntersectionObserver(target, ([{ isIntersecting }]) => {
+  if (isIntersecting) {
+    targetIsVisible.value = true;
+    stop();
+  }
+});
+
 const src = `https://stackblitz.com/github/${props.repoPath}?embed=1${
   props.file ? `&file=${encodeURIComponent(props.file)}` : ""
 }&theme=dark&view=${props.view}`;
 </script>
 
 <template>
-  <iframe :src="src" :class="{ resizable }"></iframe>
+  <iframe
+    :src="targetIsVisible ? src : undefined"
+    :class="{ resizable }"
+    ref="target"
+  ></iframe>
 </template>
 
 <style scoped>
