@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { PropType } from "vue";
+
 const props = defineProps({
   repoPath: {
     type: String,
@@ -8,6 +10,10 @@ const props = defineProps({
     type: String,
     default: "src/App.vue",
   },
+  view: {
+    type: String as PropType<"editor" | "preview" | "">,
+    default: "",
+  },
   resizable: {
     type: Boolean,
     default: true,
@@ -16,7 +22,7 @@ const props = defineProps({
 
 const src = `https://stackblitz.com/github/${props.repoPath}?embed=1${
   props.file ? `&file=${encodeURIComponent(props.file)}` : ""
-}&theme=dark&view=preview`;
+}&theme=dark&view=${props.view}`;
 </script>
 
 <template>
