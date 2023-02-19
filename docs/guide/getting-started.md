@@ -2,15 +2,21 @@
 
 ## Installation
 
-```bash
-npm install --save yup vue-yup-form
+::: code-group
+
+```sh [npm]
+$ npm install yup vue-yup-form
 ```
 
-or
-
-```bash
-yarn add yup vue-yup-form
+```sh [yarn]
+$ yarn add yup vue-yup-form
 ```
+
+```sh [pnpm]
+$ pnpm add yup vue-yup-form
+```
+
+:::
 
 ## Architecture
 - Headless form validation: i.e. vue-yup-form does not export UI-related components.
