@@ -2,7 +2,7 @@
 This is what `Field.$error` or `FormsField.$error` returns if there is an error.
 
 ## Details of `yup.ValidationError` object
-The [README.md of yup](https://github.com/jquense/yup/blob/pre-v1/README.md) explains the same things.
+The [README.md of yup](https://github.com/jquense/yup/blob/master/README.md) explains the same things.
 
 ### `message` property
 - Error message (`string`).
