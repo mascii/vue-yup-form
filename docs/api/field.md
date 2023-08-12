@@ -10,12 +10,12 @@ declare function field<T>(
   value: T | Ref<T>,
   schema?: FieldSchema,
   validateOptions?: ValidateOptions
-): Field<T, T>;
+): Field<T>;
 declare function field<T, U extends T>(
   value: T | Ref<T>,
   schema?: FieldSchema,
   validateOptions?: ValidateOptions
-): Field<T, U>;
+): FieldWithPreferredType<T, U>;
 ```
 
 ### 1. `value` <Badge type="danger" text="Required" />

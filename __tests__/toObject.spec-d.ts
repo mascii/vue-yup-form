@@ -57,7 +57,7 @@ describe("toObject", () => {
     }>();
   });
 
-  test("form includes Field<T, U>", () => {
+  test("form includes FieldWithPreferredType<T, U>", () => {
     type Foo = "A" | "B" | "C";
 
     const form = defineForm({

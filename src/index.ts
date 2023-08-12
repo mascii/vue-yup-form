@@ -32,7 +32,7 @@ export type FormPropType<T extends () => Form> = PropType<
   ReturnType<T> & { $key?: number }
 >;
 
-class Field<T, U extends T = T> {
+class Field<T> {
   private readonly $_valueRef: Ref<T>;
   private readonly $_errorRef: ComputedRef<yup.ValidationError | undefined>;
   public readonly $label: string;
@@ -87,6 +87,8 @@ class Field<T, U extends T = T> {
     return this.$_errorRef.value?.errors || [];
   }
 }
+
+type FieldWithPreferredType<T, U extends T> = Field<T>;
 
 class PrivateField<T> extends Field<T> {
   // Distinguish between Field and PrivateField in the structural type system
@@ -214,12 +216,12 @@ export function field<T>(
   value: T | Ref<T>,
   schema?: FieldSchema,
   validateOptions?: ValidateOptions
-): Field<T, T>;
+): Field<T>;
 export function field<T, U extends T>(
   value: T | Ref<T>,
   schema?: FieldSchema,
   validateOptions?: ValidateOptions
-): Field<T, U>;
+): FieldWithPreferredType<T, U>;
 export function field<T>(
   value: T | Ref<T>,
   schema?: FieldSchema,
@@ -278,8 +280,8 @@ type ToObjectOutput<T extends Form> = {
     ? never
     : K]: T[K] extends Form
     ? ToObjectOutput<T[K]>
-    : T[K] extends Field<any, infer U>
-    ? U
+    : T[K] extends FieldWithPreferredType<infer U1, infer U2>
+    ? U2
     : T[K] extends FormsField<infer U>
     ? ToObjectOutput<ReturnType<U>>[]
     : never;
