@@ -212,11 +212,18 @@ export function defineForm<T extends Form>(form: T): T {
   return form;
 }
 
+/**
+ * @template T Pass the type of `$value` explicitly like `ref<T>()`.
+ */
 export function field<T>(
   value: T | Ref<T>,
   schema?: FieldSchema,
   validateOptions?: ValidateOptions
 ): Field<T>;
+/**
+ * @template T Pass the type of `$value` explicitly like `ref<T>()`.
+ * @template U Pass the preferred type to be the result of `toObject()`.
+ */
 export function field<T, U extends T>(
   value: T | Ref<T>,
   schema?: FieldSchema,

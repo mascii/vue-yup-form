@@ -80,7 +80,7 @@ Since `validateSync()` is used internally, Async tests are not available.
 - Pass the type of `$value` explicitly like `ref<T>()`.
 
 ### `U` <Badge type="info" text="Optional" />
-- Pass the preferred type as the result of [`toObject()`](/api/toObject).
+- Pass the preferred type to be the result of [`toObject()`](/api/toObject).
 
 ## Details of `Field` object
 ### `$value` property
