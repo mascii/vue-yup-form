@@ -174,9 +174,7 @@ class FormsField<T extends (arg: any) => Form> {
         ? ([...Array(initialValueListOrLength)] as undefined[])
         : initialValueListOrLength;
 
-    this.$_formsRef.value = initialValueList.map((initialValue) =>
-      this.$generateFormWithKey(initialValue)
-    );
+    this.$_formsRef.value = initialValueList.map(this.$generateFormWithKey);
   }
 
   public $append(
@@ -272,7 +270,7 @@ export function isValidForm<T extends Form>(
         return false;
       }
     } else if ("$forms" in value) {
-      if (value.$error || value.$forms.some((form) => !isValidForm(form))) {
+      if (value.$error || !value.$forms.every(isValidForm)) {
         return false;
       }
     } else if (!isValidForm(value)) {
@@ -309,7 +307,7 @@ export function toObject<T extends Form>(
         obj[key] = value.$value;
       }
     } else if ("$forms" in value) {
-      obj[key] = value.$forms.map((form) => toObject(form));
+      obj[key] = value.$forms.map(toObject);
     } else {
       obj[key] = toObject(value);
     }
