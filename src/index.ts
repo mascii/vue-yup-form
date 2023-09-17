@@ -113,7 +113,7 @@ class FormsField<T extends (arg: any) => Form> {
     this.$generateFormWithKey = (initialValue) => {
       const form: any = generateForm(initialValue);
       form.$key = count++;
-      return form as ReturnType<T> & { $key: number };
+      return form;
     };
 
     this.$_formsRef = shallowRef([]);
