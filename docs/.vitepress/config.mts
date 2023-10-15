@@ -8,6 +8,7 @@ export default defineConfig({
   themeConfig: {
     logo: "/logo.svg",
     sidebar: sidebarGuide(),
+    search: { provider: "local" },
     nav: [
       {
         text: `v${version}`,
