@@ -236,7 +236,7 @@ export function field<T>(
 }
 
 export function privateField<T>(
-  value: T,
+  value: T | Ref<T>,
   schema?: FieldSchema,
   validateOptions?: ValidateOptions
 ): PrivateField<T> {
