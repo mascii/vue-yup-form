@@ -1,6 +1,6 @@
 {
   "name": "vue-yup-form",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Headless form validation with Vue and Yup",
   "keywords": [
     "vue",
